@@ -1,0 +1,39 @@
+部署到Zeabur需要的核心文件：
+
+必需文件：
+✅ app.js - 主服務器文件
+✅ package.json - 項目配置
+✅ Dockerfile - 容器配置
+
+插件文件：
+✅ manifest.xml - Outlook插件清單
+✅ src/ 文件夾 - 所有插件源代碼
+  ├── config.js - KIMI API配置
+  ├── taskpane/ - 插件界面
+  └── commands/ - 插件命令
+
+測試文件：
+✅ test.html - 瀏覽器測試頁面
+
+配置文件：
+✅ .gitignore
+✅ .zeaburignore
+✅ vercel.json - Vercel配置（備用）
+
+文檔文件：
+✅ README.md
+✅ DEPLOY.md
+✅ KIMI_SETUP.md
+
+不需要的文件：
+❌ node_modules/ - 會自動安裝
+❌ .git/ - 如果直接上傳文件
+❌ *.bat - 本地腳本文件
+❌ server.js - 舊版本，使用app.js
+
+部署步驟：
+1. 將以上必需文件打包成ZIP
+2. 在Zeabur選擇 "Upload Files"
+3. 上傳ZIP文件
+4. 設置環境變數 KIMI_API_KEY
+5. 等待部署完成
