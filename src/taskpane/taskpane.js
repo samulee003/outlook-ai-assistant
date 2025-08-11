@@ -10,19 +10,40 @@ const getConfig = () => {
 };
 
 // 檢查是否在Office環境中
+console.log('開始初始化插件...');
+console.log('Office對象是否存在:', typeof Office !== 'undefined');
+
 if (typeof Office !== 'undefined') {
+    console.log('檢測到Office環境，等待Office.onReady...');
     Office.onReady((info) => {
+        console.log('Office.onReady觸發，主機類型:', info.host);
         if (info.host === Office.HostType.Outlook) {
-            document.addEventListener("DOMContentLoaded", function() {
+            console.log('確認為Outlook環境');
+            if (document.readyState === 'loading') {
+                document.addEventListener("DOMContentLoaded", function() {
+                    console.log('DOM載入完成，初始化應用');
+                    initializeApp();
+                });
+            } else {
+                console.log('DOM已載入，直接初始化應用');
                 initializeApp();
-            });
+            }
+        } else {
+            console.log('非Outlook環境，主機類型:', info.host);
         }
     });
 } else {
+    console.log('非Office環境，在瀏覽器中運行');
     // 在瀏覽器中直接運行
-    document.addEventListener("DOMContentLoaded", function() {
+    if (document.readyState === 'loading') {
+        document.addEventListener("DOMContentLoaded", function() {
+            console.log('瀏覽器環境DOM載入完成');
+            initializeApp();
+        });
+    } else {
+        console.log('瀏覽器環境DOM已載入');
         initializeApp();
-    });
+    }
 }
 
 let currentGeneratedContent = '';
@@ -42,10 +63,16 @@ function initializeApp() {
     document.getElementById('improve-email').addEventListener('click', () => setMode('improve'));
     document.getElementById('translate-email').addEventListener('click', () => setMode('translate'));
     
-    document.getElementById('generate-btn').addEventListener('click', () => {
-        console.log('生成按鈕被點擊');
-        generateContent();
-    });
+    const generateBtn = document.getElementById('generate-btn');
+    if (generateBtn) {
+        generateBtn.addEventListener('click', () => {
+            console.log('生成按鈕被點擊');
+            generateContent();
+        });
+        console.log('生成按鈕事件監聽器已綁定');
+    } else {
+        console.error('找不到生成按鈕元素');
+    }
     document.getElementById('insert-btn').addEventListener('click', insertContent);
     document.getElementById('regenerate-btn').addEventListener('click', generateContent);
     document.getElementById('copy-btn').addEventListener('click', copyContent);
