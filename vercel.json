@@ -16,5 +16,7 @@
     "app.js": {
       "maxDuration": 30
     }
-  }
+  },
+  "buildCommand": "",
+  "outputDirectory": "."
 }
