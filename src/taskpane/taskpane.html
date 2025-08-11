@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>AI郵件助手</title>
+    
+    <!-- Office JavaScript API -->
+    <script type="text/javascript" src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js"></script>
+    
+    <!-- 配置文件 -->
+    <script type="text/javascript" src="../config.js"></script>
+    
+    <!-- 樣式 -->
+    <link rel="stylesheet" href="taskpane.css">
+</head>
+
+<body>
+    <div class="ms-welcome">
+        <header class="ms-welcome__header ms-bgColor-neutralLighter ms-fontColor-neutralPrimary">
+            <h1 class="ms-fontSize-su ms-fontWeight-light">AI郵件助手</h1>
+        </header>
+        
+        <main class="ms-welcome__main">
+            <!-- 功能選項 -->
+            <div class="feature-section">
+                <h3>選擇功能</h3>
+                <div class="button-group">
+                    <button id="generate-email" class="ms-Button ms-Button--primary">
+                        <span class="ms-Button-label">生成郵件</span>
+                    </button>
+                    <button id="improve-email" class="ms-Button">
+                        <span class="ms-Button-label">優化內容</span>
+                    </button>
+                    <button id="translate-email" class="ms-Button">
+                        <span class="ms-Button-label">翻譯郵件</span>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- 輸入區域 -->
+            <div class="input-section">
+                <h3>描述你的需求</h3>
+                <textarea id="user-prompt" placeholder="例如：寫一封感謝客戶的郵件，語氣要正式但友善..." rows="4"></textarea>
+                
+                <div class="options">
+                    <label>
+                        語氣：
+                        <select id="tone-select">
+                            <option value="professional">專業</option>
+                            <option value="friendly">友善</option>
+                            <option value="formal">正式</option>
+                            <option value="casual">輕鬆</option>
+                        </select>
+                    </label>
+                    
+                    <label>
+                        長度：
+                        <select id="length-select">
+                            <option value="short">簡短</option>
+                            <option value="medium">中等</option>
+                            <option value="long">詳細</option>
+                        </select>
+                    </label>
+                </div>
+            </div>
+            
+            <!-- 生成按鈕 -->
+            <div class="action-section">
+                <button id="generate-btn" class="ms-Button ms-Button--primary">
+                    <span class="ms-Button-label">生成內容</span>
+                </button>
+                <button id="insert-btn" class="ms-Button" disabled>
+                    <span class="ms-Button-label">插入郵件</span>
+                </button>
+            </div>
+            
+            <!-- 結果顯示 -->
+            <div class="result-section" id="result-section" style="display: none;">
+                <h3>生成結果</h3>
+                <div id="generated-content" class="generated-content"></div>
+                <div class="result-actions">
+                    <button id="regenerate-btn" class="ms-Button">
+                        <span class="ms-Button-label">重新生成</span>
+                    </button>
+                    <button id="copy-btn" class="ms-Button">
+                        <span class="ms-Button-label">複製</span>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- 載入狀態 -->
+            <div id="loading" class="loading" style="display: none;">
+                <div class="spinner"></div>
+                <p>AI正在生成內容...</p>
+            </div>
+        </main>
+    </div>
+    
+    <script type="text/javascript" src="taskpane.js"></script>
+</body>
+</html>

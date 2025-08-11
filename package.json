@@ -1,0 +1,18 @@
+{
+    "name": "outlook-ai-assistant",
+    "version": "1.0.0",
+    "description": "Outlook AI郵件協助撰寫插件",
+    "main": "app.js",
+    "scripts": {
+        "start": "node app.js",
+        "serve": "node app.js",
+        "build": "echo 'Build completed'",
+        "dev": "node app.js"
+    },
+    "dependencies": {
+        "@microsoft/office-js": "^1.1.85",
+        "express": "^4.18.2"
+    },
+    "author": "Your Name",
+    "license": "MIT"
+}

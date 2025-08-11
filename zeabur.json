@@ -1,0 +1,10 @@
+{
+  "name": "outlook-ai-assistant",
+  "build": {
+    "commands": ["npm install"]
+  },
+  "start": "npm start",
+  "environment": {
+    "NODE_ENV": "production"
+  }
+}
