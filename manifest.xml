@@ -23,7 +23,7 @@
   <FormSettings>
     <Form xsi:type="ItemEdit">
       <DesktopSettings>
-        <SourceLocation DefaultValue="http://localhost:3001/src/taskpane/taskpane.html"/>
+        <SourceLocation DefaultValue="https://YOUR-RAILWAY-URL/src/taskpane/taskpane.html"/>
       </DesktopSettings>
     </Form>
   </FormSettings>
